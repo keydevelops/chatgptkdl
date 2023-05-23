@@ -28,4 +28,4 @@ async def ai():
     return render_template('ai.html', resp='')
 
 openai.api_key = config.OPENAI_TOKEN
-app.run(debug=True)
+app.run(host="0.0.0.0", port=3098, debug=True)
