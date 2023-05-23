@@ -4,10 +4,6 @@ import config
 
 app = Flask('KDL OpenSource')
 
-@app.route('/')
-async def kdlindex():
-    return 'Sorry, this page is not ready!', 403
-
 def generate(mssg):
     try:
         completion = openai.ChatCompletion.create(
@@ -18,7 +14,7 @@ def generate(mssg):
     except Exception as e:
         return { "finish_reason": "stop", "index": 0, "message": { "content": "Ошибка при обработке запроса! Пожалуйста подождите около 20 секунд и повторите попытку.", "role": "assistant" } }
 
-@app.route('/privatekey/ai')
+@app.route('/')
 async def ai():
     requestgpt = request.args.get('rqst', default='')
     if requestgpt != '':
